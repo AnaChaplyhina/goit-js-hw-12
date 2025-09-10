@@ -5,37 +5,13 @@
     <link rel="icon" type="image/svg+xml" href="/goit-js-hw-12/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Image Search | HW-12</title>
-
-    <!-- Твої стилі -->
     <script type="module" crossorigin src="/goit-js-hw-12/index.js"></script>
-    <link rel="modulepreload" crossorigin href="/goit-js-hw-12/assets/vendor-B-WyX8ve.js">
-    <link rel="stylesheet" crossorigin href="/goit-js-hw-12/assets/index-MNoguczx.css">
+    <link rel="modulepreload" crossorigin href="/goit-js-hw-12/assets/vendor-C7oZ9Grx.js">
+    <link rel="stylesheet" crossorigin href="/goit-js-hw-12/assets/vendor-DumFYO8Z.css">
+    <link rel="stylesheet" crossorigin href="/goit-js-hw-12/assets/index-WWbPe5rE.css">
   </head>
   <body>
-    <!-- Якщо використовуєш шаблон з partials — залишаємо -->
-    <header class="header">
-  <div class="container">
-    <nav class="nav">
-      <a class="nav-logo" href="./index.html" aria-label="Site logo">
-        <svg class="nav-logo-icon" width="100" height="30">
-          <use href="img/sprite.svg#logo"></use>
-        </svg>
-      </a>
-      <ul class="nav-list">
-        <li class="nav-item">
-          <a class="nav-link {=$highlight-act}" href="./page-2.html">Page 2</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link {=$highlight-curr}" href="./page-3.html">Page 3</a>
-        </li>
-      </ul>
-    </nav>
-  </div>
-</header>
-
-
     <main>
-      <!-- Форма пошуку -->
       <form id="search-form" class="search-form">
         <label class="field">
           <input
@@ -48,33 +24,15 @@
         <button type="submit" class="btn">Search</button>
       </form>
 
-      <!-- Галерея -->
       <ul class="gallery" id="gallery"></ul>
 
-      <!-- Кнопка та лоадер (лоадер під кнопкою, як в ТЗ) -->
       <div class="controls">
         <button id="load-more" class="btn is-hidden">Load more</button>
-        <div id="loader" class="loader is-hidden" aria-label="Loading"></div>
+        <p id="loader" class="loader-text is-hidden">
+          Loading images, please wait...
+        </p>
       </div>
     </main>
 
-    <footer class="footer">
-  <div class="container">
-    <p class="footer-desc">
-      Made with ✨ by
-      <a
-        class="footer-link"
-        href="https://goit.global/ua/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        GoIT team
-      </a>
-    </p>
-  </div>
-</footer>
-
-
-    <!-- Головний модуль -->
   </body>
 </html>
