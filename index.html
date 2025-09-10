@@ -4,17 +4,21 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/goit-js-hw-12/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vanilla App Template</title>
+    <title>Image Search | HW-12</title>
+
+    <!-- Твої стилі -->
     <script type="module" crossorigin src="/goit-js-hw-12/index.js"></script>
-    <link rel="stylesheet" crossorigin href="/goit-js-hw-12/assets/index-DvPDDfy5.css">
+    <link rel="modulepreload" crossorigin href="/goit-js-hw-12/assets/vendor-B-WyX8ve.js">
+    <link rel="stylesheet" crossorigin href="/goit-js-hw-12/assets/index-MNoguczx.css">
   </head>
   <body>
+    <!-- Якщо використовуєш шаблон з partials — залишаємо -->
     <header class="header">
   <div class="container">
     <nav class="nav">
       <a class="nav-logo" href="./index.html" aria-label="Site logo">
         <svg class="nav-logo-icon" width="100" height="30">
-          <use href="/goit-js-hw-12/assets/sprite-E8vg0sBb.svg#logo"></use>
+          <use href="img/sprite.svg#logo"></use>
         </svg>
       </a>
       <ul class="nav-list">
@@ -31,80 +35,27 @@
 
 
     <main>
-      <!-- Loads the specified .html file -->
-      <section class="vite-promo">
-  <div class="container">
-    <div class="vite-promo-thumb">
-      <a
-        class="vite-promo-link"
-        href="https://vitejs.dev/"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Link to Vite official website"
-        title="Vite.js  build tool"
-      >
-        <!-- Path to images as from index.html file -->
-        <img
-          class="pic"
-          src="/goit-js-hw-12/assets/vite-logo-9o_aqrTe.png"
-          alt="Vite logo"
-          width="640"
-          height="640"
-        />
-      </a>
-    </div>
-    <h1 class="main-title">
-      <span class="main-title-gradient">Vite</span>
-      Template by
-      <a
-        class="main-title-link"
-        href="https://github.com/goitacademy/vanilla-app-template"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        GoIT
-      </a>
-    </h1>
-  </div>
-</section>
+      <!-- Форма пошуку -->
+      <form id="search-form" class="search-form">
+        <label class="field">
+          <input
+            type="text"
+            name="query"
+            placeholder="Search images..."
+            autocomplete="off"
+          />
+        </label>
+        <button type="submit" class="btn">Search</button>
+      </form>
 
-      <article class="badges">
-  <div class="container">
-    <ul class="badges-list">
-      <li class="badges-item">
-        <a
-          class="badges-link"
-          href="https://www.npmjs.com/package/vite-plugin-html-inject"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          HTML Inject
-        </a>
-      </li>
-      <li class="badges-item">
-        <a
-          class="badges-link"
-          href="https://www.npmjs.com/package/vite-plugin-full-reload"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Full Reload
-        </a>
-      </li>
-      <li class="badges-item">
-        <a
-          class="badges-link"
-          href="https://www.npmjs.com/package/postcss-sort-media-queries"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Sort Media Queries
-        </a>
-      </li>
-    </ul>
-  </div>
-</article>
+      <!-- Галерея -->
+      <ul class="gallery" id="gallery"></ul>
 
+      <!-- Кнопка та лоадер (лоадер під кнопкою, як в ТЗ) -->
+      <div class="controls">
+        <button id="load-more" class="btn is-hidden">Load more</button>
+        <div id="loader" class="loader is-hidden" aria-label="Loading"></div>
+      </div>
     </main>
 
     <footer class="footer">
@@ -124,5 +75,6 @@
 </footer>
 
 
+    <!-- Головний модуль -->
   </body>
 </html>
