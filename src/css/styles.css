@@ -1,18 +1,107 @@
-/**
-  |============================
-  | include css partials with
-  | default @import url()
-  |============================
-*/
-/* Common styles */
-@import url('./reset.css');
-@import url('./base.css');
-@import url('./container.css');
-@import url('./animations.css');
+/* ===== Image Search extra styles ===== */
+:root {
+  --gap: 24px;
+  --card-w: 360px;
+  --card-h: 200px;
+}
 
-/* Sections style */
-@import url('./header.css');
-@import url('./vite-promo.css');
-@import url('./badges.css');
-@import url('./back-link.css');
-@import url('./footer.css');
+.search-form {
+  display: flex;
+  gap: 12px;
+  max-width: 720px;
+  margin: 24px auto;
+  padding: 0 16px;
+}
+
+.search-form input {
+  width: 360px;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.btn {
+  border-radius: 8px;
+  padding: 8px 16px;
+  height: 40px;
+  background: #4e75ff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.gallery {
+  list-style: none;
+  padding: 24px 154px;
+  /* як у макеті з попереднього ДЗ */
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--card-w), 1fr));
+  gap: var(--gap);
+}
+
+.photo-card {
+  border: 1px solid #eee;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .04);
+}
+
+.photo-card a {
+  display: block;
+}
+
+.photo-card img {
+  width: 100%;
+  height: var(--card-h);
+  object-fit: cover;
+  display: block;
+}
+
+.info {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  padding: 12px;
+  font-size: 12px;
+}
+
+.info b {
+  display: block;
+  color: #555;
+  margin-bottom: 2px;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 0 40px;
+}
+
+/* Loader */
+.loader {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 3px solid #ddd;
+  border-top-color: #4e75ff;
+  animation: spin .75s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.is-hidden {
+  display: none !important;
+}

@@ -4,20 +4,42 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vanilla App Template</title>
+    <title>Image Search | HW-12</title>
+
+    <!-- Твої стилі -->
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
+    <!-- Якщо використовуєш шаблон з partials — залишаємо -->
     <load src="./partials/header.html" icon-path="img/sprite.svg#logo" />
 
     <main>
-      <!-- Loads the specified .html file -->
-      <load src="./partials/vite-promo.html" />
-      <load src="./partials/badges.html" />
+      <!-- Форма пошуку -->
+      <form id="search-form" class="search-form">
+        <label class="field">
+          <input
+            type="text"
+            name="query"
+            placeholder="Search images..."
+            autocomplete="off"
+          />
+        </label>
+        <button type="submit" class="btn">Search</button>
+      </form>
+
+      <!-- Галерея -->
+      <ul class="gallery" id="gallery"></ul>
+
+      <!-- Кнопка та лоадер (лоадер під кнопкою, як в ТЗ) -->
+      <div class="controls">
+        <button id="load-more" class="btn is-hidden">Load more</button>
+        <div id="loader" class="loader is-hidden" aria-label="Loading"></div>
+      </div>
     </main>
 
     <load src="./partials/footer.html" />
 
+    <!-- Головний модуль -->
     <script type="module" src="./main.js"></script>
   </body>
 </html>
