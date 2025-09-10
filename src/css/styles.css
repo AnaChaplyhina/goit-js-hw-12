@@ -136,3 +136,19 @@ main {
 .is-hidden {
   display: none !important;
 }
+
+.loader {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 3px solid #ddd;
+  border-top-color: #4e75ff;
+  animation: spin .75s linear infinite;
+  display: inline-block;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
