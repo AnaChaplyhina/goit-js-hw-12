@@ -6,66 +6,76 @@ const loadMoreBtn = document.querySelector('#load-more');
 
 const lightbox = new SimpleLightbox('.gallery a', {
   captionsData: 'alt',
-  captionDelay: 250,
+  captionDelay: 250
 });
 
 export function createGallery(images) {
-  const parts = images.map(function (item) {
-    const webformatURL = item.webformatURL;
-    const largeImageURL = item.largeImageURL;
-    const tags = escapeHtml(item.tags || '');
-    const likes = item.likes;
-    const views = item.views;
-    const comments = item.comments;
-    const downloads = item.downloads;
+  if (!Array.isArray(images) || images.length === 0) return;
 
-    return (
-      '<li class="photo-card">' +
-      `<a href="${largeImageURL}">` +
-      `<img src="${webformatURL}" alt="${tags}" loading="lazy" />` +
-      '</a>' +
-      '<div class="info">' +
-      `<p><b>Likes</b>${likes}</p>` +
-      `<p><b>Views</b>${views}</p>` +
-      `<p><b>Comments</b>${comments}</p>` +
-      `<p><b>Downloads</b>${downloads}</p>` +
-      '</div>' +
-      '</li>`
-    );
-  });
+  const frag = document.createDocumentFragment();
 
-  const markup = parts.join('');
-  galleryEl.insertAdjacentHTML('beforeend', markup);
+  for (let i = 0; i < images.length; i += 1) {
+    const it = images[i];
+
+    const li = document.createElement('li');
+    li.className = 'photo-card';
+
+    const a = document.createElement('a');
+    a.setAttribute('href', it.largeImageURL);
+
+    const img = document.createElement('img');
+    img.setAttribute('src', it.webformatURL);
+    img.setAttribute('alt', escapeHtml(it.tags || ''));
+    img.setAttribute('loading', 'lazy');
+
+    a.appendChild(img);
+    li.appendChild(a);
+
+    const info = document.createElement('div');
+    info.className = 'info';
+    info.appendChild(makeInfoP('Likes', it.likes));
+    info.appendChild(makeInfoP('Views', it.views));
+    info.appendChild(makeInfoP('Comments', it.comments));
+    info.appendChild(makeInfoP('Downloads', it.downloads));
+
+    li.appendChild(info);
+    frag.appendChild(li);
+  }
+
+  galleryEl.appendChild(frag);
   lightbox.refresh();
 }
 
 export function clearGallery() {
-  galleryEl.innerHTML = '';
+  if (galleryEl) galleryEl.innerHTML = '';
 }
-
 export function showLoader() {
-  loaderEl.classList.remove('is-hidden');
+  if (loaderEl) loaderEl.classList.remove('is-hidden');
 }
-
 export function hideLoader() {
-  loaderEl.classList.add('is-hidden');
+  if (loaderEl) loaderEl.classList.add('is-hidden');
 }
-
 export function showLoadMoreButton() {
-  loadMoreBtn.classList.remove('is-hidden');
+  if (loadMoreBtn) loadMoreBtn.classList.remove('is-hidden');
 }
-
 export function hideLoadMoreButton() {
-  loadMoreBtn.classList.add('is-hidden');
+  if (loadMoreBtn) loadMoreBtn.classList.add('is-hidden');
 }
-
 export function getFirstCardHeight() {
-  const firstCard = galleryEl.querySelector('.photo-card');
-  return firstCard ? firstCard.getBoundingClientRect().height : 0;
+  const first = galleryEl ? galleryEl.querySelector('.photo-card') : null;
+  return first ? first.getBoundingClientRect().height : 0;
 }
 
 export { galleryEl, loadMoreBtn };
 
+function makeInfoP(label, value) {
+  const p = document.createElement('p');
+  const b = document.createElement('b');
+  b.textContent = label;
+  p.appendChild(b);
+  p.appendChild(document.createTextNode(String(value)));
+  return p;
+}
 function escapeHtml(str) {
   return String(str)
     .replace(/&/g, '&amp;')

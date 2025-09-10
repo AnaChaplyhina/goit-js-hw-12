@@ -1,11 +1,10 @@
 import axios from 'axios';
 
-const API_KEY = 'YOUR_PIXABAY_API_KEY'; // заміни на свій ключ
-const BASE_URL = 'https://pixabay.com/api/';
+// Можеш лишити напряму в коді:
+const API_KEY = '11281296-1f4fc3f6c48856d743f19a161';
+// або, якщо колись винесеш у .env.local: const API_KEY = import.meta.env.VITE_PIXABAY_KEY;
 
-if (!API_KEY || API_KEY === 'YOUR_PIXABAY_API_KEY') {
-  throw new Error('Set your Pixabay API key in src/js/pixabay-api.js');
-}
+const BASE_URL = 'https://pixabay.com/api/';
 
 export async function getImagesByQuery(query, page) {
   const params = {
@@ -15,11 +14,13 @@ export async function getImagesByQuery(query, page) {
     orientation: 'horizontal',
     safesearch: true,
     per_page: 15,
-    page,
+    page: page,
   };
 
-  const response = await axios.get(BASE_URL, { params });
-  return response.data;
+  const { data } = await axios.get(BASE_URL, { params });
+  return data;
 }
+
+
 
 

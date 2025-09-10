@@ -1,23 +1,49 @@
-/* ===== Image Search extra styles ===== */
-:root {
-  --gap: 24px;
-  --card-w: 360px;
-  --card-h: 200px;
+/* ---------- base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  background: #f3f4f6;
+  color: #111;
+}
+
+/* ---------- container card ---------- */
+main {
+  max-width: 1200px;
+  margin: 24px auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .06);
+  padding: 24px 0;
+}
+
+/* ---------- search ---------- */
 .search-form {
   display: flex;
+  justify-content: center;
   gap: 12px;
   max-width: 720px;
-  margin: 24px auto;
+  margin: 0 auto 8px;
   padding: 0 16px;
 }
 
 .search-form input {
   width: 360px;
+  height: 40px;
   padding: 10px 12px;
-  border: 1px solid #ccc;
+  border: 1px solid #d1d5db;
   border-radius: 8px;
+  outline: none;
+}
+
+.search-form input:focus {
+  border-color: #4e75ff;
+  box-shadow: 0 0 0 3px rgba(78, 117, 255, .15);
 }
 
 .btn {
@@ -28,25 +54,36 @@
   color: #fff;
   border: none;
   cursor: pointer;
+  transition: transform .08s ease, opacity .2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(0);
 }
 
 .btn:disabled {
-  opacity: 0.7;
+  opacity: .7;
   cursor: not-allowed;
 }
 
+/* ---------- gallery grid (Figma: 3 cols, 360x200, gap 24, padding 154) ---------- */
 .gallery {
   list-style: none;
-  padding: 24px 154px;
-  /* як у макеті з попереднього ДЗ */
   margin: 0;
+  padding: 24px 154px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(var(--card-w), 1fr));
-  gap: var(--gap);
+  grid-template-columns: repeat(3, 360px);
+  gap: 24px;
+  justify-content: center;
 }
 
 .photo-card {
-  border: 1px solid #eee;
+  width: 360px;
+  border: 1px solid #e5e7eb;
   border-radius: 12px;
   overflow: hidden;
   background: #fff;
@@ -58,12 +95,14 @@
 }
 
 .photo-card img {
-  width: 100%;
-  height: var(--card-h);
-  object-fit: cover;
   display: block;
+  width: 100%;
+  height: 200px;
+  /* фіксована висота з макету */
+  object-fit: cover;
 }
 
+/* metrics */
 .info {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -74,32 +113,24 @@
 
 .info b {
   display: block;
-  color: #555;
+  color: #6b7280;
   margin-bottom: 2px;
+  font-weight: 600;
 }
 
+/* controls */
 .controls {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
-  padding: 16px 0 40px;
+  gap: 10px;
+  padding: 8px 0 32px;
 }
 
-/* Loader */
-.loader {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  border: 3px solid #ddd;
-  border-top-color: #4e75ff;
-  animation: spin .75s linear infinite;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
+.loader-text {
+  font-size: 14px;
+  color: #6b7280;
+  margin: 0;
 }
 
 .is-hidden {
